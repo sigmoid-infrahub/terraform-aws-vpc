@@ -1,0 +1,19 @@
+{
+    "resourceSpecId": "eeeeeeee-eeee-4eee-8eee-eeeeeeeeeeee",
+    "stableId": "core-vpc",
+    "displayName": "Core VPC",
+    "resourceType": "network.vpc",
+    "vpcDependency": "none",
+    "status": "draft",
+    "inputs": {
+        "cidr_block": "10.20.0.0/16",
+        "enable_dns_support": true,
+        "enable_dns_hostnames": true
+    },
+    "position": { "x": 0, "y": 0 },
+    "terraform": {
+        "module": {
+            "source": "../../terraform-modules/terraform-aws-vpc"
+        }
+    }
+}
