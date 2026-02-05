@@ -7,22 +7,11 @@
     "resourceType": "network.vpc",
     "vpcDependency": "none",
     "status": "draft",
-    "inputs": {
-        "cidr_block": "10.20.0.0/16",
-        "enable_dns_support": true,
-        "enable_dns_hostnames": true,
-        "subnet_auto_calculation": true
-    },
-    "inputSpecs": [
-        { "name": "cidr_block", "type": "string", "required": true, "description": "CIDR block for the VPC" },
-        { "name": "enable_dns_support", "type": "boolean", "required": false, "default": true },
-        { "name": "enable_dns_hostnames", "type": "boolean", "required": false, "default": false },
-        { "name": "subnet_auto_calculation", "type": "boolean", "required": false, "default": true, "description": "Enable automatic subnet management. When true, subnets are auto-managed and manual subnet creation is blocked." }
-    ],
     "position": { "x": 0, "y": 0 },
     "terraform": {
         "module": {
-            "source": "../../terraform-modules/terraform-aws-vpc"
+            "source": "github.com/sigmoid-hq/terraform-aws-vpc",
+            "ref": "main"
         }
     }
 }
