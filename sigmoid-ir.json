@@ -1,7 +1,7 @@
 {
     "resourceSpecId": "eeeeeeee-eeee-4eee-8eee-eeeeeeeeeeee",
     "stableId": "core-vpc",
-    "displayName": "Core VPC",
+    "displayName": "VPC",
     "category": "network",
     "iconUrl": "https://cdn.sigmoid.us/icons/aws/full-size/svg/networking/vpc.svg",
     "resourceType": "network.vpc",
