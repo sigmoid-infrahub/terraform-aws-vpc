@@ -1,0 +1,24 @@
+{
+    "resourceSpecId": "eeeeeeee-eeee-4eee-8eee-eeeeeeeeeeee",
+    "stableId": "core-vpc",
+    "displayName": "VPC",
+    "category": "network",
+    "iconUrl": "https://cdn.sigmoid.us/icons/aws/full-size/svg/networking/vpc.svg",
+    "resourceType": "network.vpc",
+    "vpcDependency": "none",
+    "status": "draft",
+    "position": { "x": 0, "y": 0 },
+    "terraform": {
+        "module": {
+            "source": "github.com/sigmoid-hq/terraform-aws-vpc",
+            "ref": "main"
+        }
+    },
+    "easy": {
+        "hidden": true,
+        "alias": "Network",
+        "group": "network-foundation",
+        "priority": 10,
+        "allowedProperties": ["cidr_block", "enable_dns_support", "enable_dns_hostnames"]
+    }
+}
