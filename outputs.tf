@@ -8,10 +8,22 @@ output "vpc_arn" {
   value       = aws_vpc.this.arn
 }
 
+output "flow_log_id" {
+  description = "VPC Flow Log ID. Empty when flow logs are disabled"
+  value       = var.enable_flow_logs ? aws_flow_log.this[0].id : ""
+}
+
+output "flow_log_group_name" {
+  description = "CloudWatch log group name for VPC Flow Logs. Empty when flow logs are disabled"
+  value       = var.enable_flow_logs ? aws_cloudwatch_log_group.flow_logs[0].name : ""
+}
+
 output "module" {
   description = "Full module outputs"
   value = {
-    vpc_id  = aws_vpc.this.id
-    vpc_arn = aws_vpc.this.arn
+    vpc_id              = aws_vpc.this.id
+    vpc_arn             = aws_vpc.this.arn
+    flow_log_id         = var.enable_flow_logs ? aws_flow_log.this[0].id : ""
+    flow_log_group_name = var.enable_flow_logs ? aws_cloudwatch_log_group.flow_logs[0].name : ""
   }
 }

@@ -17,7 +17,53 @@ variable "enable_dns_support" {
 variable "enable_dns_hostnames" {
   type        = bool
   description = "Enable DNS hostnames for the VPC"
-  default     = false
+  default     = true
+}
+
+variable "instance_tenancy" {
+  type        = string
+  description = "Tenancy option for instances launched into the VPC"
+  default     = "default"
+
+  validation {
+    condition     = contains(["default", "dedicated"], var.instance_tenancy)
+    error_message = "instance_tenancy must be one of: default, dedicated."
+  }
+}
+
+variable "enable_flow_logs" {
+  type        = bool
+  description = "Enable VPC Flow Logs for security auditing"
+  default     = true
+}
+
+variable "flow_log_retention_days" {
+  type        = number
+  description = "CloudWatch log retention period for VPC Flow Logs"
+  default     = 30
+}
+
+variable "flow_log_kms_key_id" {
+  type        = string
+  description = "KMS key ARN or ID used to encrypt the VPC Flow Logs log group. Empty uses CloudWatch default encryption"
+  default     = ""
+}
+
+variable "flow_log_traffic_type" {
+  type        = string
+  description = "Traffic type captured by VPC Flow Logs"
+  default     = "ALL"
+
+  validation {
+    condition     = contains(["ACCEPT", "REJECT", "ALL"], var.flow_log_traffic_type)
+    error_message = "flow_log_traffic_type must be one of: ACCEPT, REJECT, ALL."
+  }
+}
+
+variable "enable_default_sg_lockdown" {
+  type        = bool
+  description = "Remove all ingress and egress rules from the default security group"
+  default     = true
 }
 
 variable "subnet_auto_calculation" {
