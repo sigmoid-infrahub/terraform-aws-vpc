@@ -68,8 +68,26 @@ variable "enable_default_sg_lockdown" {
 
 variable "subnet_auto_calculation" {
   type        = bool
-  description = "Enable automatic subnet management (reserved for future use)"
-  default     = true
+  description = "When true, the module creates a full managed network unit (public/private subnets across AZs, internet gateway, and route tables). When false, only the VPC is created and subnets are managed as separate resources."
+  default     = false
+}
+
+variable "availability_zones" {
+  type        = list(string)
+  description = "Availability zones to spread managed subnets across. Used only when subnet_auto_calculation is true."
+  default     = []
+}
+
+variable "public_subnets" {
+  type        = list(string)
+  description = "CIDR blocks for managed public subnets (one per availability zone). Used only when subnet_auto_calculation is true."
+  default     = []
+}
+
+variable "private_subnets" {
+  type        = list(string)
+  description = "CIDR blocks for managed private subnets (one per availability zone). Used only when subnet_auto_calculation is true."
+  default     = []
 }
 
 variable "tags" {
